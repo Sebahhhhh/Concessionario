@@ -5,13 +5,17 @@
 import java.util.Scanner;
 
 // Classe main
-public class main {
+public class Main {
 
-    // Array parallelo
+    // Array paralleli
     static String[] marche = new String[100];
     static String[] modelli = new String[100];
     static double[] prezzi = new double[100];
     static int numAuto = 0;
+    static String marca;
+    static String modello;
+    static double prezzo = 0;
+
 
     // Menù
     public static void main(String[] args) {
@@ -34,26 +38,34 @@ public class main {
             // Switch
             switch (scelta) {
                 case 1:
-                    aggiungiAuto(in);
+                    System.out.print("Inserisci la marca dell'auto: ");
+                    marca = in.nextLine();
+                    System.out.print("Inserisci il modello dell'auto: ");
+                    modello = in.nextLine();
+                    System.out.print("Inserisci il prezzo dell'auto: ");
+                    prezzo = in.nextDouble();
+                    in.nextLine();
+
+                    int aggiungi = Funzioni.aggiungiAuto(marche, modelli,prezzi,numAuto,modello,marca,prezzo);
+                    System.out.println("auto aggiunta con successo");
                     break;
                 case 2:
-                    visualizzaAuto();
+
                     break;
                 case 3:
-                    cercaAuto(in);
+
                     break;
                 case 4:
-                    cancellaAuto(in);
+
                     break;
                 case 5:
-                    modificaAuto(in);
+
                     break;
                 case 6:
-                    ordinaAuto();
-                    visualizzaAuto();
+
                     break;
                 case 7:
-                    visualizzaModelliDiesel(in);
+
                     break;
                 case 0:
                     System.out.println("Chiusura del menù");
@@ -61,6 +73,7 @@ public class main {
                 default:
                     System.out.println("Scelta non valida.");
             }
+            // Chiusura menù
         } while (scelta != 0);
     }
 }
